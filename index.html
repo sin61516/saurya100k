@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Saurya100K — Building From Zero</title>
 <meta name="description" content="Saurya Singh's public business-building and $100K funding journey for SS Workforce & Facility Services." />
+
 <style>
 :root{--bg:#07111b;--panel:#0b1722;--panel2:#122331;--line:#284152;--text:#f7fbff;--muted:#a9b9c6;--accent:#ff9f68;--accent2:#65d7ff;--gold:#ffd38a;--max:1180px}
 *{box-sizing:border-box}
@@ -53,27 +54,6 @@ h1{font-size:clamp(52px,7vw,92px);line-height:.92;letter-spacing:-.075em;margin:
 .card h3{margin:0 0 7px;font-size:17px}
 .card p{margin:0;color:#8fa1ae;font-size:14px}
 .amount{font-size:28px;font-weight:800;margin-top:15px;color:#ffd09a}
-.flow{position:relative;overflow:hidden;border:1px solid #355164;border-radius:22px;background:linear-gradient(145deg,#07131d,#0d2430);min-height:390px;padding:28px}
-.flow:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle,#65d7ff16 0,transparent 38%),radial-gradient(circle at 70% 40%,#ff9f6818 0,transparent 28%);animation:pulse 6s ease-in-out infinite}
-.nodes{position:relative;display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;align-items:center;height:310px}
-.node{padding:18px;border:1px solid #3b5668;background:#0d1c27e8;border-radius:18px;position:relative;z-index:2}
-.node.center{border-color:#c07e58;box-shadow:0 0 60px #ff9f681c;text-align:center}
-.node small{color:#8096a5}
-.node strong{display:block;margin-top:6px}
-.wire{height:2px;background:linear-gradient(90deg,transparent,#65d7ff,transparent);position:relative;animation:flow 2.2s linear infinite}
-.wire:after{content:"";position:absolute;top:-4px;left:0;width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 14px #65d7ff;animation:travel 2.2s linear infinite}
-.ledger{margin-top:22px;display:grid;gap:9px}
-.tx{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:15px;background:#0a1721;border:1px solid #263d4d;border-radius:13px;padding:13px}
-.tx .type{font-size:10px;text-transform:uppercase;color:#8b9eaa}
-.tx b{font-size:13px}
-.tx small{display:block;color:#6f8492}
-.in{color:#65d7b4}
-.out{color:#ff8f8f}
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.step{position:relative;padding:20px;background:#0b1924;border:1px solid #294252;border-radius:17px}
-.num{font-size:11px;color:#ffae77;font-weight:800}
-.step h3{margin:8px 0 5px}
-.step p{color:#7f93a0;font-size:13px;margin:0}
 .support{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .support .big{padding:30px;border-radius:22px;border:1px solid #355064;background:linear-gradient(145deg,#112332,#09151f)}
 .wallet{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:14px;border:1px solid #294152;background:#08131c;border-radius:13px;margin-top:12px}
@@ -82,13 +62,21 @@ h1{font-size:clamp(52px,7vw,92px);line-height:.92;letter-spacing:-.075em;margin:
 .note{color:#738995;font-size:11px;margin-top:10px}
 .footer{padding:50px 0 80px;border-top:1px solid #1a2c38;color:#738895;font-size:13px}
 .footerrow{display:flex;justify-content:space-between;gap:20px}
-.footer b{color:#dce6ec}
-@keyframes travel{from{left:0}to{left:100%}}
-@keyframes flow{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes pulse{50%{transform:scale(1.08);opacity:.72}}
+
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media(max-width:850px){.hero,.support{grid-template-columns:1fr}.hero{padding-top:60px}.navlinks{display:none}.grid3,.roadmap{grid-template-columns:1fr 1fr}.nodes{grid-template-columns:1fr;height:auto}.wire{display:none}}
-@media(max-width:560px){.grid3,.roadmap,.stats{grid-template-columns:1fr}.footerrow{flex-direction:column}h1{font-size:54px}}
+
+@media(max-width:850px){
+.hero,.support{grid-template-columns:1fr}
+.hero{padding-top:60px}
+.navlinks{display:none}
+.grid3{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:560px){
+.grid3,.stats{grid-template-columns:1fr}
+.footerrow{flex-direction:column}
+h1{font-size:54px}
+}
 </style>
 </head>
 
@@ -101,7 +89,6 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
 .hero:before{background:radial-gradient(circle at 70% 30%,#ffd08a30 0,transparent 10%),radial-gradient(circle at 82% 42%,#65d7ff24 0,transparent 22%),linear-gradient(165deg,transparent 40%,#07121d 41%,#0d202b 70%,#071018 71%)}
 .hero:after{right:-4%;bottom:10px;width:70%;height:260px;background:linear-gradient(155deg,transparent 0 18%,#102d3a 18% 24%,transparent 24% 31%,#173c4b 31% 37%,transparent 37% 48%,#0d2938 48% 56%,transparent 56%);opacity:.72}
 .hero-copy{position:relative}
-.hero-copy:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:4%;top:-80px;background:radial-gradient(circle at 35% 30%,#fff8d6,transparent 5%,#ffad6a 18%,#65d7ff 38%,transparent 68%);filter:blur(2px);opacity:.6;animation:orb 7s ease-in-out infinite}
 .fund-card{position:relative;overflow:hidden}
 .fund-card:before{content:"";position:absolute;width:220px;height:220px;right:-80px;top:-100px;border-radius:50%;background:#65d7ff18;filter:blur(8px)}
 .fund-card:after{content:"LIVE • PUBLIC • TRANSPARENT";position:absolute;bottom:17px;right:27px;font-size:9px;letter-spacing:.18em;color:#617988}
@@ -114,8 +101,9 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
 .wallet:hover{transform:translateX(3px);border-color:#4a6979}
 .copy{transition:transform .2s,background .2s}
 .copy:hover{transform:scale(1.04);background:#d9f5ff}
-@keyframes orb{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.55}50%{transform:translate3d(-18px,14px,0) scale(1.08);opacity:.8}}
-@media(max-width:850px){.hero{min-height:auto;padding-top:85px}.hero-copy:after{right:-20px;top:-65px;width:130px;height:130px}}
+@media(max-width:850px){
+.hero{min-height:auto;padding-top:85px}
+}
 </style>
 
 <header class="nav">
@@ -128,7 +116,6 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
 <nav class="navlinks">
 <a href="#mission">Mission</a>
 <a href="#transparency">Transparency</a>
-<a href="#roadmap">Roadmap</a>
 <a href="#support">Support</a>
 </nav>
 
@@ -174,7 +161,6 @@ Public dashboard · Funding target: $100,000 · No guaranteed financial return i
 <div class="fund-label">Business funding goal</div>
 <div class="fund-number">$100K</div>
 </div>
-
 <div class="pill">LIVE CAMPAIGN</div>
 </div>
 
@@ -188,14 +174,13 @@ Public dashboard · Funding target: $100,000 · No guaranteed financial return i
 </div>
 
 <div class="stats">
-
 <div class="stat">
 <b id="raisedStat">$0</b>
 <span>Raised</span>
 </div>
 
 <div class="stat">
-<b id="supporters">3</b>
+<b>3</b>
 <span>Wallets tracked</span>
 </div>
 
@@ -203,10 +188,9 @@ Public dashboard · Funding target: $100,000 · No guaranteed financial return i
 <b>India</b>
 <span>Base</span>
 </div>
-
-</div>
 </div>
 
+</div>
 </section>
 
 <section class="section wrap" id="mission">
@@ -214,7 +198,8 @@ Public dashboard · Funding target: $100,000 · No guaranteed financial return i
 <h2>A transparent start.</h2>
 
 <p class="lead">
-The goal is simple: build a real service business, document progress honestly, and make the use of funds understandable to supporters.
+The goal is simple: build a real service business, document progress honestly,
+and make the use of funds understandable to supporters.
 </p>
 
 <div class="grid3">
@@ -245,7 +230,6 @@ The goal is simple: build a real service business, document progress honestly, a
 <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
 
 <div>
-
 <div class="eyebrow">
 <span class="dot"></span>
 LIVE WALLET MONITORS
@@ -254,24 +238,24 @@ LIVE WALLET MONITORS
 <h2 style="margin-top:14px">$100K funding monitor.</h2>
 
 <p class="lead">
-Live public blockchain balances and incoming native-coin transfers for the Bitcoin, Solana and Ethereum wallets. The dashboard refreshes automatically.
+Live public blockchain balances and incoming native-coin transfers
+for the Bitcoin, Solana and Ethereum wallets.
+The dashboard refreshes automatically.
 </p>
-
 </div>
 
 <div>
-
 <div class="pill">TARGET · $100,000</div>
-
 <div class="note" id="lastUpdated" style="text-align:right">
 Waiting for live data…
 </div>
-
 </div>
 
 </div>
 
 <div class="grid3" style="margin-top:28px">
+
+<!-- BITCOIN -->
 
 <div class="card" style="border-color:#6a533d">
 
@@ -294,6 +278,8 @@ bc1qa6ejffxt5ake5jtcyfac4ckr5cp4jnu88cazqp
 
 </div>
 
+<!-- SOLANA -->
+
 <div class="card" style="border-color:#315d70">
 
 <div style="display:flex;justify-content:space-between;align-items:center">
@@ -314,6 +300,8 @@ GdMFkTNi8zHXALFdAoXcYbr6kP5mjdCZgZgiWvbLVizm
 </div>
 
 </div>
+
+<!-- ETHEREUM -->
 
 <div class="card" style="border-color:#4b416b">
 
@@ -338,13 +326,20 @@ Checking latest ETH transaction…
 
 </div>
 
+<!-- COMBINED -->
+
 <div class="card" style="margin-top:15px;padding:20px">
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap">
 
 <div>
+
 <div class="fund-label">Combined funding</div>
-<div style="font-size:30px;font-weight:850;margin-top:5px" id="combinedRaised">$0</div>
+
+<div style="font-size:30px;font-weight:850;margin-top:5px" id="combinedRaised">
+$0
+</div>
+
 </div>
 
 <div style="min-width:240px;flex:1;max-width:650px">
@@ -377,16 +372,21 @@ Help build the first chapter.
 </h2>
 
 <p class="lead">
-Support the launch of SS Workforce &amp; Facility Services and follow the progress publicly through the website and X.
+Support the launch of SS Workforce &amp; Facility Services
+and follow the progress publicly through the website and X.
 </p>
 
 <div class="actions">
 
-<button class="btn primary" onclick="alert('Payment setup placeholder — connect your verified payment provider here.')">
+<button class="btn primary"
+onclick="alert('Payment setup placeholder — connect your verified payment provider here.')">
 Support via payment
 </button>
 
-<a class="btn secondary" href="https://x.com/sin61516" target="_blank" rel="noopener">
+<a class="btn secondary"
+href="https://x.com/sin61516"
+target="_blank"
+rel="noopener">
 Message / follow on X
 </a>
 
@@ -462,7 +462,6 @@ Copy
 
 </div>
 </div>
-
 </section>
 
 </main>
@@ -493,23 +492,63 @@ X / @sin61516
 
 <script>
 
-const target=100000;
+const target = 100000;
 
-const W={
+const W = {
 btc:'bc1qa6ejffxt5ake5jtcyfac4ckr5cp4jnu88cazqp',
 sol:'GdMFkTNi8zHXALFdAoXcYbr6kP5mjdCZgZgiWvbLVizm',
 eth:'0x1b8276587b0e372476F14b214dea63B23792bb06'
 };
 
-const $=id=>document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-const priceCache={};
+const priceCache = {};
+
+const BTC_APIS = [
+'https://mempool.space/api/address/',
+'https://blockstream.info/api/address/',
+'https://blockchain.info/rawaddr/'
+];
+
+const SOL_RPCS = [
+'https://solana-rpc.publicnode.com',
+'https://api.mainnet.solana.com',
+'https://api.mainnet-beta.solana.com'
+];
+
+async function getJson(url,options={}){
+
+const c = new AbortController();
+
+const t = setTimeout(() => c.abort(),10000);
+
+try{
+
+const r = await fetch(url,{
+...options,
+cache:'no-store',
+signal:c.signal
+});
+
+if(!r.ok) throw Error('HTTP '+r.status);
+
+return await r.json();
+
+}finally{
+
+clearTimeout(t);
+
+}
+
+}
 
 async function rpc(url,method,params){
 
-const r=await fetch(url,{
+const j = await getJson(url,{
 method:'POST',
-headers:{'content-type':'application/json'},
+headers:{
+'content-type':'application/json'
+},
 body:JSON.stringify({
 jsonrpc:'2.0',
 id:1,
@@ -518,137 +557,76 @@ params
 })
 });
 
-if(!r.ok)throw Error('RPC HTTP '+r.status);
-
-const j=await r.json();
-
-if(j.error)throw Error(j.error.message);
+if(j.error) throw Error(j.error.message);
 
 return j.result;
 
 }
 
+async function rpcAny(method,params){
+
+let last;
+
+for(const url of SOL_RPCS){
+
+try{
+
+return await rpc(url,method,params);
+
+}catch(e){
+
+last=e;
+
+}
+
+}
+
+throw last || Error('Solana RPC unavailable');
+
+}
+
 async function price(id){
 
-const c=priceCache[id];
+const c = priceCache[id];
 
-if(c&&Date.now()-c.time<300000)
+if(c && Date.now()-c.time < 300000)
 return c.value;
 
-const coinbase={
+const pairs = {
 bitcoin:'BTC-USD',
 solana:'SOL-USD',
 ethereum:'ETH-USD'
 };
 
-try{
+const urls = [
 
-const r=await fetch(
-'https://api.coinbase.com/v2/prices/'+coinbase[id]+'/spot',
-{cache:'no-store'}
-);
+'https://api.coinbase.com/v2/prices/'+pairs[id]+'/spot',
 
-if(r.ok){
-
-const j=await r.json();
-
-const v=Number(j.data?.amount)||0;
-
-if(v){
-
-priceCache[id]={
-value:v,
-time:Date.now()
-};
-
-return v;
-
-}
-
-}
-
-}catch(e){}
-
-try{
-
-const r=await fetch(
 'https://api.coingecko.com/api/v3/simple/price?ids='+id+'&vs_currencies=usd',
-{cache:'no-store'}
-);
 
-if(r.ok){
-
-const j=await r.json();
-
-const v=Number(j[id]?.usd)||0;
-
-if(v){
-
-priceCache[id]={
-value:v,
-time:Date.now()
-};
-
-return v;
-
-}
-
-}
-
-}catch(e){}
-
-try{
-
-const map={
+'https://api.binance.com/api/v3/ticker/price?symbol='+
+({
 bitcoin:'BTCUSDT',
 solana:'SOLUSDT',
 ethereum:'ETHUSDT'
-};
+}[id])
 
-const r=await fetch(
-'https://api.binance.com/api/v3/ticker/price?symbol='+map[id],
-{cache:'no-store'}
-);
+];
 
-if(r.ok){
-
-const j=await r.json();
-
-const v=Number(j.price)||0;
-
-if(v){
-
-priceCache[id]={
-value:v,
-time:Date.now()
-};
-
-return v;
-
-}
-
-}
-
-}catch(e){}
-
-if(id==='bitcoin'){
+for(const url of urls){
 
 try{
 
-const r=await fetch(
-'https://mempool.space/api/v1/prices',
-{cache:'no-store'}
-);
+const j = await getJson(url);
 
-if(r.ok){
-
-const j=await r.json();
-
-const v=Number(j.USD)||0;
+const v =
+Number(j.data?.amount ||
+j[id]?.usd ||
+j.price) || 0;
 
 if(v){
 
-priceCache[id]={
+priceCache[id] = {
 value:v,
 time:Date.now()
 };
@@ -657,30 +635,53 @@ return v;
 
 }
 
+}catch(e){}
+
+}
+
+if(id === 'bitcoin'){
+
+try{
+
+const j = await getJson(
+'https://mempool.space/api/v1/prices'
+);
+
+const v = Number(j.USD) || 0;
+
+if(v){
+
+priceCache[id] = {
+value:v,
+time:Date.now()
+};
+
+return v;
+
 }
 
 }catch(e){}
 
 }
 
-return c?.value||0;
+return c?.value || 0;
 
 }
 
 function age(ts){
 
-if(!ts)return '';
+if(!ts) return '';
 
-const m=Math.max(
+const m = Math.max(
 0,
 Math.floor((Date.now()/1000-ts)/60)
 );
 
-if(m<1)return 'just now';
+if(m<1) return 'just now';
 
-if(m<60)return m+'m ago';
+if(m<60) return m+'m ago';
 
-const h=Math.floor(m/60);
+const h = Math.floor(m/60);
 
 if(h<24)
 return h+'h '+m%60+'m ago';
@@ -691,37 +692,77 @@ return Math.floor(h/24)+'d ago';
 
 function txLine(id,html){
 
-const el=$(id);
+const el = $(id);
 
-if(el)
-el.innerHTML=html;
+if(el) el.innerHTML = html;
+
+}
+
+async function btcBalance(){
+
+for(const base of BTC_APIS){
+
+try{
+
+const j = await getJson(base+W.btc);
+
+if(typeof j.final_balance === 'number')
+return j.final_balance/1e8;
+
+const s = j.chain_stats;
+
+if(s)
+return (
+(s.funded_txo_sum || 0) -
+(s.spent_txo_sum || 0)
+)/1e8;
+
+}catch(e){}
+
+}
+
+throw Error('BTC balance unavailable');
 
 }
 
 async function latestIncomingBtc(){
 
-const txs=await(
-await fetch(
-'https://mempool.space/api/address/'+W.btc+'/txs',
-{cache:'no-store'}
+for(const base of BTC_APIS.slice(0,2)){
+
+try{
+
+const txs = await getJson(
+base+W.btc+'/txs'
+);
+
+for(const tx of txs || []){
+
+const incoming =
+(tx.vout || [])
+.filter(v =>
+(v.scriptpubkey_address ||
+v.scriptpubkey_addresses?.[0]) === W.btc
 )
-).json();
+.reduce(
+(a,v)=>a+(v.value||0),
+0
+);
 
-for(const tx of txs||[]){
+const outgoing =
+(tx.vin || [])
+.filter(v =>
+v.prevout?.scriptpubkey_address === W.btc
+)
+.reduce(
+(a,v)=>a+(v.prevout?.value||0),
+0
+);
 
-const incoming=(tx.vout||[])
-.filter(v=>v.scriptpubkey_address===W.btc)
-.reduce((a,v)=>a+(v.value||0),0);
-
-const outgoing=(tx.vin||[])
-.filter(v=>v.prevout?.scriptpubkey_address===W.btc)
-.reduce((a,v)=>a+(v.prevout?.value||0),0);
-
-const net=incoming-outgoing;
+const net = incoming-outgoing;
 
 if(net>0){
 
-return{
+return {
 amount:net/1e8,
 txid:tx.txid,
 time:tx.status?.block_time
@@ -731,94 +772,103 @@ time:tx.status?.block_time
 
 }
 
+}catch(e){}
+
+}
+
 return null;
 
 }
 
-async function latestIncomingSol(){
+async function solBalance(){
 
-const sigs=await rpc(
-'https://api.mainnet-beta.solana.com',
-'getSignaturesForAddress',
+const r = await rpcAny(
+'getBalance',
 [
 W.sol,
 {
-limit:10,
 commitment:'finalized'
 }
 ]
 );
 
-for(const item of sigs||[]){
+if(!r || typeof r.value !== 'number')
+throw Error('Invalid Solana balance');
 
-if(!item?.signature||item.err)
+return r.value/1e9;
+
+}
+
+async function latestIncomingSol(){
+
+try{
+
+const sigs = await rpcAny(
+'getSignaturesForAddress',
+[
+W.sol,
+{
+limit:5,
+commitment:'confirmed'
+}
+]
+);
+
+for(const item of sigs || []){
+
+if(!item?.signature || item.err)
 continue;
 
-const tx=await rpc(
-'https://api.mainnet-beta.solana.com',
+try{
+
+const tx = await rpcAny(
 'getTransaction',
 [
 item.signature,
 {
 encoding:'jsonParsed',
-commitment:'finalized',
+commitment:'confirmed',
 maxSupportedTransactionVersion:0
 }
 ]
 );
 
-if(!tx)
-continue;
+if(!tx) continue;
 
-const instructions=[
-...(tx.transaction?.message?.instructions||[]),
-...((tx.meta?.innerInstructions||[])
-.flatMap(x=>x.instructions||[]))
-];
+const keys =
+tx.transaction?.message?.accountKeys || [];
 
-const direct=instructions.find(
-ix=>
-ix?.program==='system'&&
-ix?.parsed?.type==='transfer'&&
-ix?.parsed?.info?.destination===W.sol
+const i =
+keys.findIndex(
+k => (k.pubkey || k) === W.sol
 );
 
-if(direct?.parsed?.info?.lamports){
-
-return{
-amount:direct.parsed.info.lamports/1e9,
-signature:item.signature,
-time:tx.blockTime||item.blockTime
-};
-
-}
-
-const keys=tx.transaction?.message?.accountKeys||[];
-
-const i=keys.findIndex(
-k=>(k.pubkey||k)===W.sol
-);
-
-const delta=
-i>=0&&
-tx.meta?.postBalances&&
+const delta =
+i >= 0 &&
+tx.meta?.postBalances &&
 tx.meta?.preBalances
 ?
-(tx.meta.postBalances[i]-tx.meta.preBalances[i])/1e9
-:
-0;
+(
+tx.meta.postBalances[i] -
+tx.meta.preBalances[i]
+)/1e9
+:0;
 
 if(delta>0){
 
-return{
+return {
 amount:delta,
 signature:item.signature,
-time:tx.blockTime||item.blockTime
+time:tx.blockTime || item.blockTime
 };
 
 }
 
+}catch(e){}
+
 }
+
+}catch(e){}
 
 return null;
 
@@ -826,28 +876,30 @@ return null;
 
 async function latestIncomingEth(){
 
-const j=await(
-await fetch(
-'https://eth.blockscout.com/api/v2/addresses/'+W.eth+'/transactions',
-{cache:'no-store'}
-)
-).json();
+const j = await getJson(
+'https://eth.blockscout.com/api/v2/addresses/'+
+W.eth+
+'/transactions'
+);
 
-for(const tx of j.items||[]){
+for(const tx of j.items || []){
 
-const to=(tx.to?.hash||'').toLowerCase();
+const to =
+(tx.to?.hash || '').toLowerCase();
 
-const from=(tx.from?.hash||'').toLowerCase();
+const from =
+(tx.from?.hash || '').toLowerCase();
 
-const value=Number(tx.value||0)/1e18;
+const value =
+Number(tx.value || 0)/1e18;
 
 if(
-to===W.eth.toLowerCase()&&
-from!==W.eth.toLowerCase()&&
-value>0
+to === W.eth.toLowerCase() &&
+from !== W.eth.toLowerCase() &&
+value > 0
 ){
 
-return{
+return {
 amount:value,
 hash:tx.hash,
 time:tx.timestamp
@@ -871,48 +923,38 @@ async function live(){
 if(window.__liveBusy)
 return;
 
-window.__liveBusy=true;
+window.__liveBusy = true;
 
-let total=0;
+let total = 0;
+
+/* BITCOIN */
 
 try{
 
-const btc=await(
-await fetch(
-'https://mempool.space/api/address/'+W.btc,
-{cache:'no-store'}
-)
-).json();
+const bal = await btcBalance();
 
-const btcBal=
-(
-btc.chain_stats.funded_txo_sum-
-btc.chain_stats.spent_txo_sum
-)/1e8;
+const p = await price('bitcoin');
 
-const p=await price('bitcoin');
+$('btcStatus').textContent =
+bal.toFixed(8)+' BTC · Live';
 
-$('btcStatus').textContent=
-btcBal.toFixed(8)+' BTC · Live';
-
-$('btcAmount').textContent=
+$('btcAmount').textContent =
 p
 ?
-'$'+(btcBal*p).toLocaleString(
+'$'+(bal*p).toLocaleString(
 undefined,
 {
 maximumFractionDigits:2
 }
 )
-:
-'Price unavailable';
+:'Price unavailable';
 
 if(p)
-total+=btcBal*p;
+total += bal*p;
 
 try{
 
-const x=await latestIncomingBtc();
+const x = await latestIncomingBtc();
 
 txLine(
 'btcTx',
@@ -933,61 +975,51 @@ x.txid+
 
 txLine(
 'btcTx',
-'Latest BTC transaction unavailable'
+'BTC balance live · transaction history temporarily unavailable'
 );
 
 }
 
 }catch(e){
 
-$('btcStatus').textContent=
-'Bitcoin data unavailable';
+$('btcStatus').textContent =
+'Bitcoin live data unavailable';
 
 txLine(
 'btcTx',
-'Check Mempool Explorer'
+'Retrying automatically…'
 );
 
 }
+
+/* SOLANA */
 
 try{
 
-const r=await rpc(
-'https://api.mainnet-beta.solana.com',
-'getBalance',
-[
-W.sol,
-{
-commitment:'finalized'
-}
-]
-);
+const bal = await solBalance();
 
-const sol=r.value/1e9;
+const p = await price('solana');
 
-const p=await price('solana');
+$('solStatus').textContent =
+bal.toFixed(9)+' SOL · Live';
 
-$('solStatus').textContent=
-sol.toFixed(9)+' SOL · Live';
-
-$('solAmount').textContent=
+$('solAmount').textContent =
 p
 ?
-'$'+(sol*p).toLocaleString(
+'$'+(bal*p).toLocaleString(
 undefined,
 {
 maximumFractionDigits:2
 }
 )
-:
-'Price unavailable';
+:'Price unavailable';
 
 if(p)
-total+=sol*p;
+total += bal*p;
 
 try{
 
-const x=await latestIncomingSol();
+const x = await latestIncomingSol();
 
 txLine(
 'solTx',
@@ -1001,48 +1033,49 @@ age(x.time)+
 x.signature+
 '" target="_blank" rel="noopener" style="color:#65d7ff">View transaction ↗</a>'
 :
-'No recent incoming payment found'
+'Balance live · no recent incoming transfer found'
 );
 
 }catch(e){
 
 txLine(
 'solTx',
-'Latest SOL transaction unavailable'
+'SOL balance live · transaction history temporarily unavailable'
 );
 
 }
 
 }catch(e){
 
-$('solStatus').textContent=
-'Solana data unavailable';
+$('solStatus').textContent =
+'Solana live data unavailable';
 
 txLine(
 'solTx',
-'Check Solana Explorer'
+'Retrying automatically…'
 );
 
 }
 
-try{
-
-let eth=0;
+/* ETHEREUM */
 
 try{
 
-const j=await(
-await fetch(
-'https://eth.blockscout.com/api/v2/addresses/'+W.eth,
-{cache:'no-store'}
-)
-).json();
+let eth = 0;
 
-eth=Number(j.coin_balance||0)/1e18;
+try{
+
+const j = await getJson(
+'https://eth.blockscout.com/api/v2/addresses/'+
+W.eth
+);
+
+eth =
+Number(j.coin_balance || 0)/1e18;
 
 }catch(e){
 
-const wei=await rpc(
+const wei = await rpc(
 'https://cloudflare-eth.com',
 'eth_getBalance',
 [
@@ -1051,16 +1084,16 @@ W.eth,
 ]
 );
 
-eth=parseInt(wei,16)/1e18;
+eth = parseInt(wei,16)/1e18;
 
 }
 
-const p=await price('ethereum');
+const p = await price('ethereum');
 
-$('ethStatus').textContent=
+$('ethStatus').textContent =
 eth.toFixed(6)+' ETH · Live';
 
-$('ethAmount').textContent=
+$('ethAmount').textContent =
 p
 ?
 '$'+(eth*p).toLocaleString(
@@ -1069,15 +1102,14 @@ undefined,
 maximumFractionDigits:2
 }
 )
-:
-'Price unavailable';
+:'Price unavailable';
 
 if(p)
-total+=eth*p;
+total += eth*p;
 
 try{
 
-const x=await latestIncomingEth();
+const x = await latestIncomingEth();
 
 txLine(
 'ethTx',
@@ -1098,29 +1130,32 @@ x.hash+
 
 txLine(
 'ethTx',
-'Latest ETH transaction unavailable'
+'ETH balance live · transaction history temporarily unavailable'
 );
 
 }
 
 }catch(e){
 
-$('ethStatus').textContent=
+$('ethStatus').textContent =
 'Ethereum data unavailable';
 
 txLine(
 'ethTx',
-'Check Etherscan'
+'Retrying automatically…'
 );
 
 }
 
-const pct=Math.min(
+/* TOTAL */
+
+const pct =
+Math.min(
 total/target*100,
 100
 );
 
-$('combinedRaised').textContent=
+$('combinedRaised').textContent =
 '$'+total.toLocaleString(
 undefined,
 {
@@ -1128,13 +1163,13 @@ maximumFractionDigits:2
 }
 );
 
-$('combinedBar').style.width=
+$('combinedBar').style.width =
 pct+'%';
 
-$('combinedPercent').textContent=
+$('combinedPercent').textContent =
 pct.toFixed(2)+'%';
 
-$('raisedText').textContent=
+$('raisedText').textContent =
 '$'+total.toLocaleString(
 undefined,
 {
@@ -1142,7 +1177,7 @@ maximumFractionDigits:2
 }
 )+' raised';
 
-$('raisedStat').textContent=
+$('raisedStat').textContent =
 '$'+total.toLocaleString(
 undefined,
 {
@@ -1150,19 +1185,21 @@ maximumFractionDigits:2
 }
 );
 
-$('bar').style.width=
+$('bar').style.width =
 pct+'%';
 
-const stamp=$('lastUpdated');
+const stamp = $('lastUpdated');
 
 if(stamp)
-stamp.textContent=
+stamp.textContent =
 'Last updated · '+
 new Date().toLocaleTimeString();
 
-window.__liveBusy=false;
+window.__liveBusy = false;
 
 }
+
+/* START */
 
 live();
 
@@ -1171,9 +1208,12 @@ live,
 30000
 );
 
+/* COPY WALLET */
+
 async function copyText(id){
 
-const value=$(id).textContent.trim();
+const value =
+$(id).textContent.trim();
 
 try{
 
@@ -1181,9 +1221,11 @@ await navigator.clipboard.writeText(value);
 
 }catch(e){
 
-const area=document.createElement('textarea');
+const area =
+document.createElement('textarea');
 
-area.value=value;
+area.value = value;
+
 area.style.position='fixed';
 area.style.left='-9999px';
 
@@ -1198,12 +1240,15 @@ area.remove();
 
 }
 
-const button=
-$(id).parentElement.parentElement.querySelector('.copy');
+const button =
+$(id).parentElement.parentElement
+.querySelector('.copy');
 
-const old=button.textContent;
+const old =
+button.textContent;
 
-button.textContent='Copied ✓';
+button.textContent =
+'Copied ✓';
 
 setTimeout(
 ()=>button.textContent=old,
