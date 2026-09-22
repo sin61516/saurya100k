@@ -23,5 +23,676 @@ body{background:radial-gradient(circle at 75% 10%,#34546b55,transparent 28%),rad
 <section class="section wrap" id="support"><div class="support"><div class="big"><div class="fund-label">Support the journey</div><h2 style="margin-top:10px">Help build the first chapter.</h2><p class="lead">Support the launch of SS Workforce &amp; Facility Services and follow the progress publicly through the website and X.</p><div class="actions"><button class="btn primary" onclick="alert('Payment setup placeholder — connect your verified payment provider here.')">Support via payment</button><a class="btn secondary" href="https://x.com/sin61516" target="_blank" rel="noopener">Message / follow on X</a></div><div class="note" style="margin-top:18px">Only use the wallet addresses shown here for support.</div></div><div class="big"><div class="fund-label">Wallets</div><h3 style="margin:10px 0 0">Support with crypto</h3><div class="wallet"><div><strong style="display:block;font-size:12px;color:#ffd09a;margin-bottom:5px">₿ Bitcoin</strong><code id="walletBtc">bc1qa6ejffxt5ake5jtcyfac4ckr5cp4jnu88cazqp</code></div><button class="copy" onclick="copyText('walletBtc')">Copy</button></div><div class="wallet"><div><strong style="display:block;font-size:12px;color:#65d7ff;margin-bottom:5px">◎ Solana</strong><code id="walletSol">GdMFkTNi8zHXALFdAoXcYbr6kP5mjdCZgZgiWvbLVizm</code></div><button class="copy" onclick="copyText('walletSol')">Copy</button></div><div class="wallet"><div><strong style="display:block;font-size:12px;color:#b9a5ff;margin-bottom:5px">Ξ Ethereum</strong><code id="walletEth">0x1b8276587b0e372476F14b214dea63B23792bb06</code></div><button class="copy" onclick="copyText('walletEth')">Copy</button></div></div></div></section>
 </main>
 <footer class="footer"><div class="wrap footerrow"><div><b>SAURYA100K</b><br>SS Workforce &amp; Facility Services · India</div><div><b>Follow the build</b><br><a href="https://x.com/sin61516" target="_blank" rel="noopener">X / @sin61516</a></div><div>© 2026 Saurya Singh</div></div></footer>
-<script>const target=100000;const W={btc:'bc1qa6ejffxt5ake5jtcyfac4ckr5cp4jnu88cazqp',sol:'GdMFkTNi8zHXALFdAoXcYbr6kP5mjdCZgZgiWvbLVizm',eth:'0x1b8276587b0e372476F14b214dea63B23792bb06'};document.getElementById('bar').style.width='0%';document.getElementById('raisedText').textContent='$0 raised';document.getElementById('raisedStat').textContent='$0';async function rpc(url,method,params){const r=await fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method,params})});const j=await r.json();if(j.error)throw Error(j.error.message);return j.result}async function live(){try{const prices=(await (await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,solana,ethereum&vs_currencies=usd')).json());const btc=await (await fetch('https://mempool.space/api/address/'+W.btc)).json();const btcBal=(btc.chain_stats.funded_txo_sum-btc.chain_stats.spent_txo_sum)/1e8;const sol=(await rpc('https://api.mainnet-beta.solana.com','getBalance',[W.sol])).value/1e9;const eth=parseInt(await rpc('https://cloudflare-eth.com','eth_getBalance',[W.eth,'latest']),16)/1e18;const b=btcBal*prices.bitcoin.usd,s=sol*prices.solana.usd,e=eth*prices.ethereum.usd,total=b+s+e;document.getElementById('btcAmount').textContent='$'+b.toLocaleString(undefined,{maximumFractionDigits:2});document.getElementById('solAmount').textContent='$'+s.toLocaleString(undefined,{maximumFractionDigits:2});document.getElementById('ethAmount').textContent='$'+e.toLocaleString(undefined,{maximumFractionDigits:2});document.getElementById('btcStatus').textContent=btcBal.toFixed(8)+' BTC · Live';document.getElementById('solStatus').textContent=sol.toFixed(6)+' SOL · Live';document.getElementById('ethStatus').textContent=eth.toFixed(6)+' ETH · Live';const pct=Math.min(total/target*100,100);document.getElementById('combinedRaised').textContent='$'+total.toLocaleString(undefined,{maximumFractionDigits:2});document.getElementById('combinedBar').style.width=pct+'%';document.getElementById('combinedPercent').textContent=pct.toFixed(2)+'%';document.getElementById('raisedText').textContent='$'+total.toLocaleString(undefined,{maximumFractionDigits:2})+' raised';document.getElementById('raisedStat').textContent='$'+total.toLocaleString(undefined,{maximumFractionDigits:2});document.getElementById('bar').style.width=pct+'%'}catch(e){['btcStatus','solStatus','ethStatus'].forEach(id=>document.getElementById(id).textContent='Temporarily unavailable')}}live();setInterval(live,30000);async function copyText(id){const value=document.getElementById(id).textContent.trim();try{await navigator.clipboard.writeText(value)}catch(e){const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.left='-9999px';document.body.appendChild(area);area.focus();area.select();document.execCommand('copy');area.remove()}const button=document.querySelector('#'+id).parentElement.parentElement.querySelector('.copy');const old=button.textContent;button.textContent='Copied ✓';setTimeout(()=>button.textContent=old,1400)}</script>
+  <script>
+const target=100000;
+
+const W={
+  btc:'bc1qa6ejffxt5ake5jtcyfac4ckr5cp4jnu88cazqp',
+  sol:'GdMFkTNi8zHXALFdAoXcYbr6kP5mjdCZgZgiWvbLVizm',
+  eth:'0x1b8276587b0e372476F14b214dea63B23792bb06'
+};
+
+async function rpc(url,method,params){
+  const r=await fetch(url,{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({
+      jsonrpc:'2.0',
+      id:1,
+      method,
+      params
+    })
+  });
+
+  if(!r.ok) throw Error('RPC HTTP '+r.status);
+
+  const j=await r.json();
+
+  if(j.error) throw Error(j.error.message);
+
+  return j.result;
+}
+
+async function price(id){
+  try{
+    const r=await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids='+
+      id+'&vs_currencies=usd',
+      {cache:'no-store'}
+    );
+
+    const j=await r.json();
+
+    return j[id]?.usd || 0;
+  }catch(e){
+    return 0;
+  }
+}
+
+function age(ts){
+  if(!ts) return '';
+
+  const minutes=Math.max(
+    0,
+    Math.floor((Date.now()/1000-ts)/60)
+  );
+
+  if(minutes<1) return 'just now';
+
+  if(minutes<60)
+    return minutes+'m ago';
+
+  const hours=Math.floor(minutes/60);
+
+  if(hours<24)
+    return hours+'h '+(minutes%60)+'m ago';
+
+  return Math.floor(hours/24)+'d ago';
+}
+
+function addTx(id,html){
+
+  let el=document.getElementById(id);
+
+  if(!el){
+
+    el=document.createElement('div');
+
+    el.id=id;
+    el.className='note';
+
+    const amount=document.getElementById(
+      id==='btcTx'
+      ?'btcAmount'
+      :id==='ethTx'
+      ?'ethAmount'
+      :'solAmount'
+    );
+
+    if(amount && amount.parentElement){
+      amount.parentElement.insertBefore(
+        el,
+        amount.nextSibling
+      );
+    }
+  }
+
+  el.innerHTML=html;
+}
+
+
+/* =========================
+   BITCOIN
+========================= */
+
+async function latestIncomingBtc(){
+
+  const txs=await (
+    await fetch(
+      'https://mempool.space/api/address/'+W.btc+'/txs',
+      {cache:'no-store'}
+    )
+  ).json();
+
+  for(const tx of txs||[]){
+
+    const incoming=(tx.vout||[])
+      .filter(v=>v.scriptpubkey_address===W.btc)
+      .reduce((a,v)=>a+(v.value||0),0);
+
+    const outgoing=(tx.vin||[])
+      .filter(v=>v.prevout?.scriptpubkey_address===W.btc)
+      .reduce((a,v)=>a+(v.prevout?.value||0),0);
+
+    const net=incoming-outgoing;
+
+    if(net>0){
+
+      return {
+        amount:net/1e8,
+        txid:tx.txid,
+        time:tx.status?.block_time
+      };
+
+    }
+  }
+
+  return null;
+}
+
+
+/* =========================
+   SOLANA
+========================= */
+
+async function latestIncomingSol(){
+
+  const sigs=await rpc(
+    'https://api.mainnet-beta.solana.com',
+    'getSignaturesForAddress',
+    [
+      W.sol,
+      {
+        limit:20,
+        commitment:'finalized'
+      }
+    ]
+  );
+
+  for(const item of sigs||[]){
+
+    if(!item?.signature || item.err)
+      continue;
+
+    const tx=await rpc(
+      'https://api.mainnet-beta.solana.com',
+      'getTransaction',
+      [
+        item.signature,
+        {
+          encoding:'jsonParsed',
+          commitment:'finalized',
+          maxSupportedTransactionVersion:0
+        }
+      ]
+    );
+
+    if(!tx) continue;
+
+    const instructions=[
+      ...(tx.transaction?.message?.instructions||[]),
+      ...(
+        (tx.meta?.innerInstructions||[])
+        .flatMap(x=>x.instructions||[])
+      )
+    ];
+
+    const direct=instructions.find(
+      ix =>
+        ix?.program==='system' &&
+        ix?.parsed?.type==='transfer' &&
+        ix?.parsed?.info?.destination===W.sol
+    );
+
+    if(direct?.parsed?.info?.lamports){
+
+      return {
+        amount:direct.parsed.info.lamports/1e9,
+        signature:item.signature,
+        time:tx.blockTime||item.blockTime
+      };
+
+    }
+
+    const keys=
+      tx.transaction?.message?.accountKeys||[];
+
+    const i=keys.findIndex(
+      k=>(k.pubkey||k)===W.sol
+    );
+
+    const delta=
+      i>=0 &&
+      tx.meta?.postBalances &&
+      tx.meta?.preBalances
+      ?
+      (
+        tx.meta.postBalances[i]-
+        tx.meta.preBalances[i]
+      )/1e9
+      :0;
+
+    if(delta>0){
+
+      return {
+        amount:delta,
+        signature:item.signature,
+        time:tx.blockTime||item.blockTime
+      };
+
+    }
+  }
+
+  return null;
+}
+
+
+/* =========================
+   ETHEREUM
+========================= */
+
+async function latestIncomingEth(){
+
+  const r=await fetch(
+    'https://eth.blockscout.com/api/v2/addresses/'+
+    W.eth+
+    '/transactions',
+    {cache:'no-store'}
+  );
+
+  const j=await r.json();
+
+  for(const tx of j.items||[]){
+
+    const to=(tx.to?.hash||'').toLowerCase();
+
+    const from=(tx.from?.hash||'').toLowerCase();
+
+    const value=
+      Number(tx.value||0)/1e18;
+
+    if(
+      to===W.eth.toLowerCase() &&
+      from!==W.eth.toLowerCase() &&
+      value>0
+    ){
+
+      return {
+        amount:value,
+        hash:tx.hash,
+        time:
+          tx.timestamp
+          ?
+          Math.floor(
+            new Date(tx.timestamp).getTime()/1000
+          )
+          :null
+      };
+
+    }
+  }
+
+  return null;
+}
+
+
+/* =========================
+   LIVE UPDATE
+========================= */
+
+async function live(){
+
+  let total=0;
+
+
+  /* ---------- BTC ---------- */
+
+  try{
+
+    const p=await price('bitcoin');
+
+    const btc=await (
+      await fetch(
+        'https://mempool.space/api/address/'+
+        W.btc,
+        {cache:'no-store'}
+      )
+    ).json();
+
+    const btcBal=
+      (
+        btc.chain_stats.funded_txo_sum-
+        btc.chain_stats.spent_txo_sum
+      )/1e8;
+
+    const usd=btcBal*p;
+
+    document.getElementById(
+      'btcAmount'
+    ).textContent=
+      '$'+usd.toLocaleString(
+        undefined,
+        {maximumFractionDigits:2}
+      );
+
+    document.getElementById(
+      'btcStatus'
+    ).textContent=
+      btcBal.toFixed(8)+
+      ' BTC · Live';
+
+    total+=usd;
+
+
+    try{
+
+      const x=await latestIncomingBtc();
+
+      addTx(
+        'btcTx',
+
+        x
+
+        ?
+
+        '<span style="color:#65d7b4">'+
+        '+'+x.amount.toFixed(8)+
+        ' BTC received · '+
+        age(x.time)+
+        '</span> · '+
+
+        '<a href="https://mempool.space/tx/'+
+        x.txid+
+        '" target="_blank" rel="noopener" '+
+        'style="color:#65d7ff">'+
+        'View transaction ↗'+
+        '</a>'
+
+        :
+
+        'No recent incoming payment found'
+      );
+
+    }catch(e){
+
+      addTx(
+        'btcTx',
+        'Latest transaction unavailable'
+      );
+
+    }
+
+  }catch(e){
+
+    document.getElementById(
+      'btcStatus'
+    ).textContent=
+      'Temporarily unavailable';
+
+  }
+
+
+  /* ---------- SOL ---------- */
+
+  try{
+
+    const solResult=await rpc(
+      'https://api.mainnet-beta.solana.com',
+      'getBalance',
+      [
+        W.sol,
+        {commitment:'finalized'}
+      ]
+    );
+
+    const sol=
+      solResult.value/1e9;
+
+    const solPrice=
+      await price('solana');
+
+    const usd=
+      sol*solPrice;
+
+    document.getElementById(
+      'solAmount'
+    ).textContent=
+      '$'+usd.toLocaleString(
+        undefined,
+        {maximumFractionDigits:2}
+      );
+
+    document.getElementById(
+      'solStatus'
+    ).textContent=
+      sol.toFixed(9)+
+      ' SOL · Live';
+
+    total+=usd;
+
+
+    try{
+
+      const x=
+        await latestIncomingSol();
+
+      addTx(
+        'solTx',
+
+        x
+
+        ?
+
+        '<span style="color:#65d7b4">'+
+        '+'+x.amount.toFixed(9)+
+        ' SOL received · '+
+        age(x.time)+
+        '</span> · '+
+
+        '<a href="https://solscan.io/tx/'+
+        x.signature+
+        '" target="_blank" rel="noopener" '+
+        'style="color:#65d7ff">'+
+        'View transaction ↗'+
+        '</a>'
+
+        :
+
+        'No recent incoming payment found'
+      );
+
+    }catch(e){
+
+      addTx(
+        'solTx',
+        'Latest transaction unavailable'
+      );
+
+    }
+
+  }catch(e){
+
+    document.getElementById(
+      'solStatus'
+    ).textContent=
+      'Temporarily unavailable';
+
+  }
+
+
+  /* ---------- ETH ---------- */
+
+  try{
+
+    const eth=parseInt(
+      await rpc(
+        'https://cloudflare-eth.com',
+        'eth_getBalance',
+        [
+          W.eth,
+          'latest'
+        ]
+      ),
+      16
+    )/1e18;
+
+    const ethPrice=
+      await price('ethereum');
+
+    const usd=
+      eth*ethPrice;
+
+    document.getElementById(
+      'ethAmount'
+    ).textContent=
+      '$'+usd.toLocaleString(
+        undefined,
+        {maximumFractionDigits:2}
+      );
+
+    document.getElementById(
+      'ethStatus'
+    ).textContent=
+      eth.toFixed(6)+
+      ' ETH · Live';
+
+    total+=usd;
+
+
+    try{
+
+      const x=
+        await latestIncomingEth();
+
+      addTx(
+        'ethTx',
+
+        x
+
+        ?
+
+        '<span style="color:#65d7b4">'+
+        '+'+x.amount.toFixed(6)+
+        ' ETH received · '+
+        age(x.time)+
+        '</span> · '+
+
+        '<a href="https://etherscan.io/tx/'+
+        x.hash+
+        '" target="_blank" rel="noopener" '+
+        'style="color:#65d7ff">'+
+        'View transaction ↗'+
+        '</a>'
+
+        :
+
+        'No recent incoming payment found'
+      );
+
+    }catch(e){
+
+      addTx(
+        'ethTx',
+        'Latest transaction unavailable'
+      );
+
+    }
+
+  }catch(e){
+
+    document.getElementById(
+      'ethStatus'
+    ).textContent=
+      'Temporarily unavailable';
+
+  }
+
+
+  /* ---------- TOTAL ---------- */
+
+  const pct=
+    Math.min(
+      total/target*100,
+      100
+    );
+
+  document.getElementById(
+    'combinedRaised'
+  ).textContent=
+    '$'+total.toLocaleString(
+      undefined,
+      {maximumFractionDigits:2}
+    );
+
+  document.getElementById(
+    'combinedBar'
+  ).style.width=
+    pct+'%';
+
+  document.getElementById(
+    'combinedPercent'
+  ).textContent=
+    pct.toFixed(2)+'%';
+
+  document.getElementById(
+    'raisedText'
+  ).textContent=
+    '$'+total.toLocaleString(
+      undefined,
+      {maximumFractionDigits:2}
+    )+
+    ' raised';
+
+  document.getElementById(
+    'raisedStat'
+  ).textContent=
+    '$'+total.toLocaleString(
+      undefined,
+      {maximumFractionDigits:2}
+    );
+
+  document.getElementById(
+    'bar'
+  ).style.width=
+    pct+'%';
+}
+
+
+/* FIRST UPDATE */
+live();
+
+
+/* UPDATE EVERY 10 SECONDS */
+setInterval(
+  live,
+  10000
+);
+
+
+/* =========================
+   COPY WALLET
+========================= */
+
+async function copyText(id){
+
+  const value=
+    document.getElementById(id)
+    .textContent
+    .trim();
+
+  try{
+
+    await navigator.clipboard.writeText(
+      value
+    );
+
+  }catch(e){
+
+    const area=
+      document.createElement('textarea');
+
+    area.value=value;
+
+    area.style.position='fixed';
+    area.style.left='-9999px';
+
+    document.body.appendChild(area);
+
+    area.focus();
+    area.select();
+
+    document.execCommand('copy');
+
+    area.remove();
+
+  }
+
+  const button=
+    document.querySelector(
+      '#'+id
+    ).parentElement.parentElement
+    .querySelector('.copy');
+
+  const old=
+    button.textContent;
+
+  button.textContent=
+    'Copied ✓';
+
+  setTimeout(
+    ()=>button.textContent=old,
+    1400
+  );
+}
+</script>
 </body></html>
